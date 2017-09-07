@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_my_teams"
+            android:icon="@drawable/ic_my_teams"
+            android:title="My Teams" />
+        <item
+            android:id="@+id/nav_student_details"
+            android:icon="@drawable/ic_mentor_details"
+            android:title="Student Details" />
+        <item
+            android:id="@+id/nav_mentor_details"
+            android:icon="@drawable/ic_mentor_details"
+            android:title="Mentor Details" />
+        <item
+            android:id="@+id/nav_rate_us"
+            android:icon="@drawable/ic_rate_us"
+            android:title="Rate Us" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Share" />
+        <item
+            android:id="@+id/nav_change_password"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Change Password" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Logout" />
+    </group>
+</menu>

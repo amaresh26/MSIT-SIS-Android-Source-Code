@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "300177185312",
+    "firebase_url": "https://msitportal-170020.firebaseio.com",
+    "project_id": "msitportal-170020",
+    "storage_bucket": "msitportal-170020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300177185312:android:b5ca5dabf329157c",
+        "android_client_info": {
+          "package_name": "in.msitprogram.quickmark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300177185312-lo1tvl41ja4jkvvf4vnpa5tnklcp573l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.msitprogram.quickmark",
+            "certificate_hash": "1b01f8e2b8be77486a38c7f07e46aebad3ae8337"
+          }
+        },
+        {
+          "client_id": "300177185312-0pmpfjoqo52rfqepmtg7huujatc2j63c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcq2DWWcE3zVYJ_Bj0lkAziwzgDgjxKns"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300177185312-0pmpfjoqo52rfqepmtg7huujatc2j63c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

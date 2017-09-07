@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/application_tool_bar" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_leave_reason"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="8dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHighlight="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/input_leave_reason"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|top"
+            android:hint="@string/reason"
+            android:lines="6"
+            android:imeOptions="flagNoEnterAction"
+            android:inputType="textMultiLine"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Duration"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/side_heading_text_size" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/from_date_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/ripple"
+            android:text="From Date"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/to_date_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/ripple"
+            android:text="To Date"
+            android:textColor="@android:color/white" />
+
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Approve Or Reject Leave"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/side_heading_text_size" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/approve_leave_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:text="Approve Leave"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/cancel_leave_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:text="Cancel Leave"
+            android:textColor="@android:color/white" />
+
+    </TableRow>
+
+
+</LinearLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="in.msitprogram.quickmark">
+
+    //permissions for application
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="app.cloudstringers.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <permission
+        android:name="app.cloudstringers.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.student.DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.student.ApplyLeaveActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.student.StudentAttendanceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.student.StudentDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.CourseListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.student.StudentMarksActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.student.StudentEventListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.student.StudentEventDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.student.StudentLeaveHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorDashboardActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorPostEventActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorAttendanceActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorEventListActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.student.StudentMyTeamActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorMyTeamActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.StudentDetailsInMentorActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.StudentDetailedMarksActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorApproveLeaveActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.mentor.MentorAppliedLeavesByStudentsActivity"
+            android:label="@string/title_activity_mentor_dashboard"
+            android:theme="@style/AppTheme" />
+        <receiver
+            android:name=".receivers.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.mediasters.wheresmyturf" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".services.GcmIntentService" />
+    </application>
+
+</manifest>

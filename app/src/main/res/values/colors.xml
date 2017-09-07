@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0f2937</color>
+    <color name="colorPrimaryDark">#0f2937</color>
+    <color name="colorAccent">#18669b</color>
+
+    <!--user colors-->
+
+    <!--absent-->
+    <color name="red" >#c0392b</color>
+    <!--present-->
+    <color name="green" >#27ae60</color>
+    <!--half day-->
+    <color name="orange" >#e67e22</color>
+    <!--late-->
+    <color name="gray" >#95a5a6</color>
+
+    <color name="mid_nit_black">#2c3e50</color>
+
+</resources>
