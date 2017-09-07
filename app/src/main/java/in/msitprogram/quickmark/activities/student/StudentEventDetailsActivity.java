@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatEditText;
 import android.widget.Button;
+import android.widget.TextView;
 
 import in.msitprogram.quickmark.R;
 import in.msitprogram.quickmark.activities.BaseActivity;
@@ -19,16 +20,15 @@ public class StudentEventDetailsActivity extends BaseActivity {
 
     private EventDetailsModel mEventDetailsModel;
     private AppCompatEditText title;
-    private AppCompatEditText description;
+    private TextView description,postedBy;
     private Button eventDate;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_event_details);
         //setting the tool bar
-        setToolbar("Event Details");
+        setToolbar("Details");
         //finding the views
         findViews();
         //getting the event details from the event list in intent
@@ -59,7 +59,8 @@ public class StudentEventDetailsActivity extends BaseActivity {
      */
     private void findViews() {
         title = (AppCompatEditText) findViewById(R.id.title);
-        description = (AppCompatEditText) findViewById(R.id.description);
+        description = (TextView) findViewById(R.id.description);
+        postedBy = (TextView) findViewById(R.id.posted_by);
         eventDate = (Button) findViewById(R.id.event_date);
     }
 
@@ -70,6 +71,7 @@ public class StudentEventDetailsActivity extends BaseActivity {
         description.setEnabled(FALSE);
         eventDate.setText(mEventDetailsModel.getEventDate());
         eventDate.setEnabled(FALSE);
+        postedBy.setText(mEventDetailsModel.getPostedBy());
     }
 
     @Override

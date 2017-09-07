@@ -3,6 +3,10 @@ package in.msitprogram.quickmark.activities.student;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,6 +39,7 @@ public class StudentMyTeamActivity extends BaseActivity {
     private ArrayList<StudentDetailsModel> studentList;
     private String cid;
     private TextView mNoData;
+    private StudentListAdapter mStudentListAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,7 +112,7 @@ public class StudentMyTeamActivity extends BaseActivity {
                                 studentList.add(mStudentDetailsModel);
                             }
                             //setting the student adapter to the list
-                            StudentListAdapter mStudentListAdapter = new StudentListAdapter(StudentMyTeamActivity.this, studentList);
+                            mStudentListAdapter = new StudentListAdapter(StudentMyTeamActivity.this, studentList);
                             mStudentList.setAdapter(mStudentListAdapter);
                         }
                     }
@@ -130,5 +135,31 @@ public class StudentMyTeamActivity extends BaseActivity {
         if (!Networking.isNetworkAvailable(StudentMyTeamActivity.this)) {
             showNoNetworkDialogue(StudentMyTeamActivity.this);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_student_details_in_mentor, menu);
+
+        MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (TextUtils.isEmpty(newText)) {
+                    mStudentListAdapter.getFilter().filter("");
+                    mStudentList.clearTextFilter();
+                } else {
+                    mStudentListAdapter.getFilter().filter(newText);
+                }
+                return true;
+            }
+        });
+        return true;
     }
 }

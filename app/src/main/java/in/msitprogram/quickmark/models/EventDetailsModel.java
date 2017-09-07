@@ -13,16 +13,15 @@ public class EventDetailsModel implements Serializable {
     private String createdBy;
     private String description;
     private String eventDate;
+    private String postedBy;
 
-    public EventDetailsModel(String eventId, String title, String createdBy, String description, String eventDate) {
+    public EventDetailsModel(String eventId, String title, String createdBy, String description, String eventDate, String postedBy) {
         this.eventId = eventId;
         this.title = title;
         this.createdBy = createdBy;
         this.description = description;
         this.eventDate = eventDate;
-    }
-
-    public EventDetailsModel() {
+        this.postedBy = postedBy;
     }
 
     public String getEventId() {
@@ -63,5 +62,13 @@ public class EventDetailsModel implements Serializable {
 
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
+
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
     }
 }

@@ -107,8 +107,9 @@ public class MentorEventListActivity extends BaseActivity {
                             String description = eventData.getString("description");
                             String event_date = eventData.getString("event_date");
                             String created_by = eventData.getString("created_by");
+                            String postedBy = eventData.getString("full_name");
                             //setting the data to the model
-                            EventDetailsModel mEventDetailsModel = new EventDetailsModel(bid, title, created_by, description, event_date);
+                            EventDetailsModel mEventDetailsModel = new EventDetailsModel(bid, title, created_by, description, event_date,postedBy);
                             //adding the model objects to array list
                             mEventList.add(mEventDetailsModel);
                         }
