@@ -68,6 +68,7 @@ public class MentorDashboardActivity extends BaseActivity
         if (!mSessionManager.getUserImg().equals("") && mSessionManager.getUserImg() != null) {
 //            Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()).
 //                    fit().centerCrop().into(mNavUserImage);
+
             Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()+ "?time=" + System.currentTimeMillis());
             Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(mNavUserImage);
         }
