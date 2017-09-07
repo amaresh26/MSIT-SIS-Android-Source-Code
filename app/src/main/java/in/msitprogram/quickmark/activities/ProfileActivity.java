@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -115,8 +117,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
         //if image is not available
         if (!mSessionManager.getUserImg().equals("") && mSessionManager.getUserImg() != null) {
-            Picasso.with(ProfileActivity.this).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()).
-                    fit().centerCrop().into(userImg);
+            Picasso.with(ProfileActivity.this).invalidate(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg());
+            Picasso.with(ProfileActivity.this).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(userImg);
         }
         userImg.setClickable(false);
     }
