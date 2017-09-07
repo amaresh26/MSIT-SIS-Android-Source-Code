@@ -1,15 +1,14 @@
 package in.msitprogram.quickmark.activities.mentor;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.android.volley.VolleyError;
@@ -50,44 +49,44 @@ public class MentorAttendanceActivity extends BaseActivity {
         //getting the list of students from the api
         getStudentList();
 
-        studentLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder builderSingle = new AlertDialog.Builder(MentorAttendanceActivity.this);
-                builderSingle.setTitle("Select One Option");
-
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MentorAttendanceActivity.this, android.R.layout.select_dialog_item);
-                arrayAdapter.add("Absent");
-                arrayAdapter.add("Half Day");
-                arrayAdapter.add("Late");
-                //arrayAdapter.add("Present");
-
-                builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String strName = arrayAdapter.getItem(which);
-                        if (strName.equals("Absent")) {
-                            studentModelList.get(position).setStudentAttendance("0");
-                        } else if (strName.equals("Half Day")) {
-                            studentModelList.get(position).setStudentAttendance("2");
-                        } else if (strName.equals("Late")) {
-                            studentModelList.get(position).setStudentAttendance("1");
-                        } else if (strName.equals("Present")) {
-                            studentModelList.get(position).setStudentAttendance("3");
-                        }
-                        mStudentListAdapter.notifyDataSetChanged();
-                    }
-                });
-                builderSingle.show();
-            }
-        });
+//        studentLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//                AlertDialog.Builder builderSingle = new AlertDialog.Builder(MentorAttendanceActivity.this);
+//                builderSingle.setTitle("Select One Option");
+//
+//                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MentorAttendanceActivity.this, android.R.layout.select_dialog_item);
+//                arrayAdapter.add("Absent");
+//                arrayAdapter.add("Half Day");
+//                arrayAdapter.add("Late");
+//                //arrayAdapter.add("Present");
+//
+//                builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        String strName = arrayAdapter.getItem(which);
+//                        if (strName.equals("Absent")) {
+//                            studentModelList.get(position).setStudentAttendance("0");
+//                        } else if (strName.equals("Half Day")) {
+//                            studentModelList.get(position).setStudentAttendance("2");
+//                        } else if (strName.equals("Late")) {
+//                            studentModelList.get(position).setStudentAttendance("1");
+//                        } else if (strName.equals("Present")) {
+//                            studentModelList.get(position).setStudentAttendance("3");
+//                        }
+//                        mStudentListAdapter.notifyDataSetChanged();
+//                    }
+//                });
+//                builderSingle.show();
+//            }
+//        });
     }
 
     /*
@@ -141,10 +140,37 @@ public class MentorAttendanceActivity extends BaseActivity {
     }
 
 
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_attendance, menu);
+//        return true;
+//    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_attendance, menu);
+
+        MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (TextUtils.isEmpty(newText)) {
+                    mStudentListAdapter.getFilter().filter("");
+                    studentLv.clearTextFilter();
+                } else {
+                    mStudentListAdapter.getFilter().filter(newText);
+                }
+                return true;
+            }
+        });
+
         return true;
     }
 
@@ -152,9 +178,34 @@ public class MentorAttendanceActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.student_attendance) {
-            String studentAttendanceStr = getStudentAttendance();
-            //send attendance data to server
-            sendStudentAttendance(studentAttendanceStr);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setTitle("Confirm");
+            builder.setMessage("Are you sure you want confirm attendance?");
+
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    String studentAttendanceStr = getStudentAttendance();
+                    //send attendance data to server
+                    sendStudentAttendance(studentAttendanceStr);
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    // Do nothing
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
         }
         return true;
     }

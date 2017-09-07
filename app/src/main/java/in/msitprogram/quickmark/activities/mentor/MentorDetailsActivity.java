@@ -2,6 +2,10 @@ package in.msitprogram.quickmark.activities.mentor;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.android.volley.VolleyError;
@@ -28,6 +32,7 @@ import in.msitprogram.quickmark.utils.VolleyTask;
 public class MentorDetailsActivity extends BaseActivity {
     private ListView mMentorList;
     private ArrayList<MentorDetailsModel> mentorList;
+    private MentorListAdapter mMentorListAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class MentorDetailsActivity extends BaseActivity {
                             mentorList.add(mMentorDetailsModel);
                         }
                         //setting the mentor adapter to the list
-                        MentorListAdapter mMentorListAdapter = new MentorListAdapter(MentorDetailsActivity.this, mentorList);
+                        mMentorListAdapter = new MentorListAdapter(MentorDetailsActivity.this, mentorList);
                         mMentorList.setAdapter(mMentorListAdapter);
                     }
                 } catch (JSONException e) {
@@ -88,5 +93,31 @@ public class MentorDetailsActivity extends BaseActivity {
         if (!Networking.isNetworkAvailable(MentorDetailsActivity.this)) {
             showNoNetworkDialogue(MentorDetailsActivity.this);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_student_details_in_mentor, menu);
+
+        MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (TextUtils.isEmpty(newText)) {
+                    mMentorListAdapter.getFilter().filter("");
+                    mMentorList.clearTextFilter();
+                } else {
+                    mMentorListAdapter.getFilter().filter(newText);
+                }
+                return true;
+            }
+        });
+        return true;
     }
 }
