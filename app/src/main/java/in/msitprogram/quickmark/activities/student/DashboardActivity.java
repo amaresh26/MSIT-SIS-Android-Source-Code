@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import in.msitprogram.quickmark.R;
@@ -63,8 +65,10 @@ public class DashboardActivity extends BaseActivity
         //setting the image to the nav
         mNavUserImage = (ImageView) lay.findViewById(R.id.user_img);
         if (!mSessionManager.getUserImg().equals("") && mSessionManager.getUserImg() != null) {
-            Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()).
-                    fit().centerCrop().into(mNavUserImage);
+//            Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()).
+//                    fit().centerCrop().into(mNavUserImage);
+            Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()+ "?time=" + System.currentTimeMillis());
+            Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mSessionManager.getUserImg()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(mNavUserImage);
         }
         //finding the views
         findViews();
