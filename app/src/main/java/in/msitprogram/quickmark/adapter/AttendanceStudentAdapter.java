@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -99,7 +101,8 @@ public class AttendanceStudentAdapter extends BaseAdapter {
         }
         holder.tvStudentFullName.setText(mStudentList.get(position).getFullName());
         holder.tvRollNumber.setText(mStudentList.get(position).getRollNumber());
-        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(position).getStudentImageUrl()).fit().centerCrop().into(holder.ivStudentImage);
+        Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mStudentList.get(position).getStudentImageUrl()+ "?time=" + System.currentTimeMillis());
+        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(position).getStudentImageUrl()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(holder.ivStudentImage);
         if (mStudentList.get(position).getStudentAttendance().equals("3")) {
             holder.mAttendance.setBackgroundColor(ContextCompat.getColor(mContext, R.color.green));
             holder.mAttendance.setText("Present");

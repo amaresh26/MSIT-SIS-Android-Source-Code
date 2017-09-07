@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -66,7 +68,9 @@ public class UserListAdapter extends BaseAdapter {
         }
         holder.tvStudentFullName.setText(mStudentList.get(i).getFullName());
         holder.tvRollNumber.setText(mStudentList.get(i).getRollNumber());
-        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(i).getUserImageUrl()).fit().centerCrop().into(holder.ivStudentImage);
+        Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mStudentList.get(i).getUserImageUrl()+ "?time=" + System.currentTimeMillis());
+        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(i).getUserImageUrl()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(holder.ivStudentImage);
+       // Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(i).getUserImageUrl()).fit().centerCrop().into(holder.ivStudentImage);
         holder.mAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

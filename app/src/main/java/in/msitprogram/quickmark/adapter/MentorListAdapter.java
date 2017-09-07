@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -72,7 +74,10 @@ public class MentorListAdapter extends BaseAdapter {
         holder.tvMentorEmail.setLinksClickable(true);
         holder.tvMentorEmail.setText(mMentorList.get(i).getMentorEmail());
         holder.tvMentorFullName.setText(mMentorList.get(i).getFullName());
-        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mMentorList.get(i).getMentorImageUrl()).fit().centerCrop().into(holder.ivMentorImage);
+
+        Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mMentorList.get(i).getMentorImageUrl()+ "?time=" + System.currentTimeMillis());
+        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mMentorList.get(i).getMentorImageUrl()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(holder.ivMentorImage);
+        //Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mMentorList.get(i).getMentorImageUrl()).fit().centerCrop().into(holder.ivMentorImage);
         if (mMentorList.get(i).getMentorTypeId().equals("3"))
             holder.tvMentorType.setText("Non-Teaching Staff");
         else

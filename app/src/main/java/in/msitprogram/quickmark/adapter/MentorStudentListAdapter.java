@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -116,7 +118,9 @@ public class MentorStudentListAdapter extends BaseAdapter {
         holder.tvParentMobile.setAutoLinkMask(Linkify.PHONE_NUMBERS);
         holder.tvParentMobile.setLinksClickable(true);
         holder.tvParentMobile.setText(mStudentList.get(i).getParentMobile());
-        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(i).getStudentImageUrl()).fit().centerCrop().into(holder.ivStudentImage);
+        Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mStudentList.get(i).getStudentImageUrl()+ "?time=" + System.currentTimeMillis());
+        Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(i).getStudentImageUrl()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(holder.ivStudentImage);
+        //Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentList.get(i).getStudentImageUrl()).fit().centerCrop().into(holder.ivStudentImage);
         return convertView;
     }
 
