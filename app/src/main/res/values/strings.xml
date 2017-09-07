@@ -44,7 +44,7 @@
     <string name="completed_date">End Date</string>
     <string name="description">Description</string>
     <string name="title_activity_mentor_dashboard">Dashboard</string>
-    <string name="post_event">Post Event</string>
+    <string name="post_event">Announcements</string>
     <string name="approve_leaves">Approve Leaves</string>
     <string name="student_marks">Student Marks</string>
     <string name="type">Type</string>

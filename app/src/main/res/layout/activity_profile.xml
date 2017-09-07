@@ -94,7 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:editable="false"
-                        android:hint="@string/roll_number"
+                        android:hint="Username"
                         android:inputType="none"
                         android:textColor="@color/colorPrimaryDark" />
 

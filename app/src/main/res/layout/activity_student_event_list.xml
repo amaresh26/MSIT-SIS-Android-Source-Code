@@ -16,12 +16,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center|left"
+            android:gravity="center"
             android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
             android:paddingTop="10dp"
             android:textStyle="bold"
-            android:text="Event Title"
+            android:text="Title"
             android:textColor="@android:color/black"
             android:textSize="@dimen/normal_text_size" />
 
@@ -30,11 +29,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center|left"
+            android:gravity="center"
             android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
             android:paddingTop="10dp"
-            android:text="Event Date"
+            android:text="Date"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:textSize="@dimen/normal_text_size" />
