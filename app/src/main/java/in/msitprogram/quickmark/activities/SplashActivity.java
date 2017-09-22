@@ -94,6 +94,7 @@ public class SplashActivity extends Activity {
             @Override
             protected void onPostExecute(String msg) {
                 try {
+                    Log.e("GCM Post Call",msg);
                     if (regId.length() > 3)
                         mSessionManager.saveFcmId(regId);
                 } catch (Exception e) {
