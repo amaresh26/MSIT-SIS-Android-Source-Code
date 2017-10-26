@@ -27,6 +27,7 @@
 -keep class com.parse.*{ *; }
 -dontwarn com.parse.**
 -dontwarn com.squareup.picasso.**
+-keep class android.support.v7.widget.SearchView { *; }
 -keepclasseswithmembernames class * {
     native <methods>;
     }
