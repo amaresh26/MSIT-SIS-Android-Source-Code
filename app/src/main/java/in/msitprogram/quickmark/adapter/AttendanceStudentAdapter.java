@@ -149,7 +149,7 @@ public class AttendanceStudentAdapter extends BaseAdapter implements Filterable{
 
         holder.tvStudentFullName.setText(mStudentListFiltered.get(position).getFullName());
         holder.tvRollNumber.setText(mStudentListFiltered.get(position).getRollNumber());
-        Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mStudentListFiltered.get(position).getStudentImageUrl()+ "?time=" + System.currentTimeMillis());
+//        Picasso.with(mContext).invalidate(Constants.IMAGE_BASE_URL + mStudentListFiltered.get(position).getStudentImageUrl()+ "?time=" + System.currentTimeMillis());
         Picasso.with(mContext).load(Constants.IMAGE_BASE_URL + mStudentListFiltered.get(position).getStudentImageUrl()+ "?time=" + System.currentTimeMillis()).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).fit().centerCrop().into(holder.ivStudentImage);
         if (mStudentListFiltered.get(position).getStudentAttendance().equals("3")) {
             holder.mAttendance.setBackgroundColor(ContextCompat.getColor(mContext, R.color.green));
