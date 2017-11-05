@@ -26,10 +26,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@android:color/white"
-        android:background="@color/red"
         android:padding="2dp"
-        android:text="@string/status" />
+        android:text="@string/status"
+        android:textColor="@android:color/white" />
 
 
 </LinearLayout>

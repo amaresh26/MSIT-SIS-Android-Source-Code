@@ -4,7 +4,6 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,7 +40,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/ripple"
                 android:orientation="vertical">
 
                 <ImageView
@@ -78,7 +76,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/ripple"
                 android:orientation="vertical">
 
                 <ImageView
@@ -123,7 +120,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/ripple"
                 android:orientation="vertical">
 
                 <ImageView
@@ -160,7 +156,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/ripple"
                 android:orientation="vertical">
 
                 <ImageView

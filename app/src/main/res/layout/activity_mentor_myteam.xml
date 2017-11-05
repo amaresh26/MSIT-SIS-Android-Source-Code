@@ -11,6 +11,7 @@
         android:id="@+id/mentor_myteams"
         android:layout_width="match_parent"
         android:divider="@android:color/transparent"
+        android:clickable="false"
         android:dividerHeight="0.5dp"
         android:layout_height="match_parent"></ListView>
 
